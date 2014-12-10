@@ -5,6 +5,7 @@
 #
 # v1.0 by circulosmeos 04-2014.
 # http://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
+# Distributed under GPL 3 (http://www.gnu.org/licenses/gpl-3.0.html)
 #
 use strict;
 
