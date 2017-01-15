@@ -3,6 +3,12 @@ gdown.pl
 
 Google Drive direct download of big files
 
+Requirements
+============
+
+*wget* and *Perl* must be in the PATH.
+Windows and linux compatible.
+
 Usage
 =====
 

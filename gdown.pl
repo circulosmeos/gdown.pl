@@ -4,12 +4,13 @@
 # ./gdown.pl 'gdrive file url' ['desired file name']
 #
 # v1.0 by circulosmeos 04-2014.
+# v1.1 by circulosmeos 01-2017.
 # http://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
 # Distributed under GPL 3 (http://www.gnu.org/licenses/gpl-3.0.html)
 #
 use strict;
 
-my $TEMP='/tmp';
+my $TEMP='gdown.cookie.temp';
 my $COMMAND;
 my $confirm;
 my $check;
@@ -17,8 +18,13 @@ sub execute_command();
 
 my $URL=shift;
 die "\n./gdown.pl 'gdrive file url' [desired file name]\n\n" if $URL eq '';
+
 my $FILENAME=shift;
 $FILENAME='gdown' if $FILENAME eq '';
+
+if ($URL=~m#^https?://drive.google.com/file/d/([^/]+)#) {
+    $URL="https://docs.google.com/uc?id=$1&export=download";
+}
 
 execute_command();
 
@@ -55,7 +61,7 @@ while (-s $FILENAME < 100000) { # only if the file isn't the download yet
 }
 
 sub execute_command() {
-    $COMMAND="wget --load-cookie $TEMP/cookie.txt --save-cookie $TEMP/cookie.txt \"$URL\"";
+    $COMMAND="wget --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$FILENAME\"" if $FILENAME ne '';
     `$COMMAND`;
     return 1;
