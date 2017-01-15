@@ -60,6 +60,8 @@ while (-s $FILENAME < 100000) { # only if the file isn't the download yet
     execute_command();
 }
 
+unlink $TEMP;
+
 sub execute_command() {
     $COMMAND="wget --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$FILENAME\"" if $FILENAME ne '';
