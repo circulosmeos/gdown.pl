@@ -11,7 +11,9 @@ Windows and linux compatible.
 
 Usage
 =====
-* Use Google Drive to generate a shareable link, viewable by anyone
+
+Use Google Drive to generate a shareable link, viewable by anyone
+
     $ ./gdown.pl 'shareable link' ['desired file name']
 
 License
