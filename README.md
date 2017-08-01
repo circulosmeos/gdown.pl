@@ -12,7 +12,9 @@ Windows and linux compatible.
 Usage
 =====
 
-$ ./gdown.pl 'gdrive file url' ['desired file name']
+Use Google Drive to generate a shareable link, viewable by anyone
+
+    $ ./gdown.pl 'shareable link' ['desired file name']
 
 License
 =======
@@ -23,4 +25,3 @@ Contact
 =======
 
 by [circulosmeos](http://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files) 04-2014.
-
