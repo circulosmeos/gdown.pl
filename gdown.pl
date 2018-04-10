@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 #
 # Google Drive direct download of big files
 # ./gdown.pl 'gdrive file url' ['desired file name']
