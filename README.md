@@ -23,13 +23,19 @@ For example, to download [this video](https://drive.google.com/file/d/0B1L_hFrWJ
 
     $ ./gdown.pl https://drive.google.com/file/d/0B1L_hFrWJfRhLUJZdXdSdTdfSWs/edit axolotl.mp4   
 
+As long as a file name is indicated (second parameter), gdown.pl **will try to resume the partially downloaded file** if an incomplete file with that name already exists.
+
 License
 =======
 
 Distributed [under GPL 3](http://www.gnu.org/licenses/gpl-3.0.html)
 
+More info
+=========
+
+[https://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files](https://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files)
+
 Contact
 =======
 
-by [circulosmeos](http://circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files)   
-04-2014
+by [circulosmeos](loopidle@gmail.com)   
