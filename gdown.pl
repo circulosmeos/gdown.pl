@@ -27,6 +27,9 @@ my $TEMP_FILENAME='gdown.'.strftime("%Y%m%d%H%M%S", localtime).'.'.substr(rand,2
 if ($URL=~m#^https?://drive.google.com/file/d/([^/]+)#) {
     $URL="https://docs.google.com/uc?id=$1&export=download";
 }
+elsif ($URL=~m#^https?://drive.google.com/open\?id=([^/]+)#) {
+    $URL="https://docs.google.com/uc?id=$1&export=download";
+}
 
 execute_command();
 
