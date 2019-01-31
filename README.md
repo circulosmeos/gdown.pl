@@ -23,7 +23,7 @@ For example, to download [this video](https://drive.google.com/file/d/0B1L_hFrWJ
 
     $ ./gdown.pl https://drive.google.com/file/d/0B1L_hFrWJfRhLUJZdXdSdTdfSWs/edit axolotl.mp4   
 
-As long as a file name is indicated (second parameter), gdown.pl **will try to resume the partially downloaded file** if an incomplete file with that name already exists.
+As long as a file name is indicated (second parameter), gdown.pl **will try to resume the partially downloaded file** if an incomplete file with that name already exists. Please note that for this to work, wget must correctly provide --spider with --server-response (-S). Wget v1.17 at least is advised.
 
 License
 =======
