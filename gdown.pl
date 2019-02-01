@@ -90,7 +90,12 @@ sub execute_command() {
     $COMMAND="wget $CONTINUE --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$OUTPUT_FILENAME\"";
     my $OUTPUT = system( $COMMAND );
-    die "\nDownloading interrupted by user\n\n" if $OUTPUT == 2; # do a clean exit with Ctrl+C
-    die "\nDownloading complete\n\n" if ( $OUTPUT == 0 && length($CONTINUE)>0 ); # do a clean exit with $FILENAME provided
+    if ( $OUTPUT == 2 ) { # do a clean exit with Ctrl+C
+        unlink $TEMP;
+        die "\nDownloading interrupted by user\n\n";
+    } elsif ( $OUTPUT == 0 && length($CONTINUE)>0 ) { # do a clean exit with $FILENAME provided
+        unlink $TEMP;
+        die "\nDownloading complete\n\n";
+    }
     return 1;
 }
