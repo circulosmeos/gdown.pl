@@ -5,7 +5,7 @@
 #
 # v1.0 by circulosmeos 04-2014.
 # v1.1 by circulosmeos 01-2017.
-# v1.2 by circulosmeos 01-2019.
+# v1.2, v1.3 by circulosmeos 01-2019.
 # //circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
 # Distributed under GPL 3 (//www.gnu.org/licenses/gpl-3.0.html)
 #
@@ -22,7 +22,7 @@ my $URL=shift;
 die "\n./gdown.pl 'gdrive file url' [desired file name]\n\n" if $URL eq '';
 
 my $FILENAME=shift;
-$FILENAME='gdown.'.strftime("%Y%m%d%H%M%S", localtime) if $FILENAME eq '';
+$FILENAME='gdown.'.strftime("%Y%m%d%H%M%S", localtime).'.'.substr(rand,2) if $FILENAME eq '';
 
 if ($URL=~m#^https?://drive.google.com/file/d/([^/]+)#) {
     $URL="https://docs.google.com/uc?id=$1&export=download";
@@ -65,7 +65,7 @@ while (-s $FILENAME < 100000) { # only if the file isn't the download yet
 unlink $TEMP;
 
 sub execute_command() {
-    $COMMAND="wget -c --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
+    $COMMAND="wget --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$FILENAME\"" if $FILENAME ne '';
     `$COMMAND`;
     return 1;
