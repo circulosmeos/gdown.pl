@@ -67,6 +67,6 @@ unlink $TEMP;
 sub execute_command() {
     $COMMAND="wget --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$FILENAME\"" if $FILENAME ne '';
-    `$COMMAND`;
+    system ( $COMMAND );
     return 1;
 }
