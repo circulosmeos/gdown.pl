@@ -32,7 +32,7 @@ As long as a file name is indicated as second parameter, *gdown.pl v2.0* **will 
 Version
 =======
 
-This version is **v1.3**.
+This version is **v1.4**.
 
 ### Warning
 

@@ -5,7 +5,7 @@
 #
 # v1.0 by circulosmeos 04-2014.
 # v1.1 by circulosmeos 01-2017.
-# v1.2, v1.3 by circulosmeos 01-2019.
+# v1.2, v1.3, v1.4 by circulosmeos 01-2019, 02-2019.
 # //circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
 # Distributed under GPL 3 (//www.gnu.org/licenses/gpl-3.0.html)
 #
