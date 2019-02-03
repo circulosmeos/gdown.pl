@@ -87,7 +87,7 @@ sub execute_command() {
         }
     }
 
-    $COMMAND="wget $CONTINUE --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
+    $COMMAND="wget $CONTINUE --progress=dot:giga --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$OUTPUT_FILENAME\"";
     my $OUTPUT = system( $COMMAND );
     if ( $OUTPUT == 2 ) { # do a clean exit with Ctrl+C
