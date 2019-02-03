@@ -68,7 +68,7 @@ while (-s $FILENAME < 100000) { # only if the file isn't the download yet
 unlink $TEMP;
 
 sub execute_command() {
-    $COMMAND="wget --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
+    $COMMAND="wget --progress=dot:giga --no-check-certificate --load-cookie $TEMP --save-cookie $TEMP \"$URL\"";
     $COMMAND.=" -O \"$FILENAME\"" if $FILENAME ne '';
     system ( $COMMAND );
     return 1;
