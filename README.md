@@ -36,13 +36,26 @@ This version is **v1.4**.
 
 ### Warning
 
-Please, note that v1.2 (available between days 12 to 31 of Jan/2019) **should not be used**, as it contains a bug that could result in unusable downloaded files. Proceed to overwrite with v1.3 in case you have it.
+Please, note that v1.2 (available between days 12 to 31 of Jan/2019) **should not be used**, as it contains a bug that could result in unusable downloaded files. Proceed to overwrite with v1.4 in case you have it.
 
 Docker
 ======
 
-A simple Docker file is provided, to build a simple Docker image with gdown.pl.
-This has been used for pre-pulling data from a Google Drive to Kubernetes persistent volumes. Thanks @anton-khodak
+A simple Docker file is provided, to build a simple Docker image with gdown.pl.    
+This has been used for pre-pulling data from a Google Drive to Kubernetes persistent volumes.     
+Thanks @anton-khodak
+
+Singularity
+===========
+
+An example [Singularity](https://sylabs.io/guides/3.2/user-guide/quick_start.html) file is provided.    
+Build the container:
+`sudo singularity build (imagename) Singularity`
+
+Run the container:
+`singularity run (imagename) (gdown.pl args)`
+
+Thanks to @ttbrunner
 
 License
 =======
