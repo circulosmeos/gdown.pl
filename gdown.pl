@@ -6,6 +6,7 @@
 # v1.0 by circulosmeos 04-2014.
 # v1.1 by circulosmeos 01-2017.
 # v1.2, 2.0 by circulosmeos 01-2019.
+# v2.1 by circulosmeos 12-2020.
 # //circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
 # Distributed under GPL 3 (//www.gnu.org/licenses/gpl-3.0.html)
 #
@@ -78,11 +79,12 @@ sub execute_command() {
         $COMMAND="wget -q -S --no-check-certificate --spider --load-cookie $TEMP --save-cookie $TEMP \"$URL\" 2>&1";
         my @HEADERS=`$COMMAND`;
         foreach my $header (@HEADERS) {
-            if ( $header =~ /Content-Type: (.+)/ ) {
-                if ( $1 !~ 'text/html' ) {
-                    $OUTPUT_FILENAME = $FILENAME;
-                    $CONTINUE = '-c';
-                }
+            if ( ( $header =~ /Content-Type: (.+)/ && $1 !~ 'text/html' ) ||
+                 $header =~ 'HTTP/1.1 405 Method Not Allowed'
+                ) {
+                $OUTPUT_FILENAME = $FILENAME;
+                $CONTINUE = '-c';
+                last;
             }
         }
     }
