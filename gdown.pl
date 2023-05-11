@@ -5,8 +5,9 @@
 #
 # v1.0 by circulosmeos 04-2014.
 # v1.1 by circulosmeos 01-2017.
-# v1.2, 2.0 by circulosmeos 01-2019.
+# v1.2, v1.3, v1.4, 2.0 by circulosmeos 01-2019, 02-2019.
 # v2.1 by circulosmeos 12-2020.
+# v2.2 by circulosmeos 05-2023.
 # //circulosmeos.wordpress.com/2014/04/12/google-drive-direct-download-of-big-files
 # Distributed under GPL 3 (//www.gnu.org/licenses/gpl-3.0.html)
 #
@@ -38,7 +39,7 @@ while (-s $TEMP_FILENAME < 100000) { # only if the file isn't the download yet
     open fFILENAME, '<', $TEMP_FILENAME;
     $check=0;
     foreach (<fFILENAME>) {
-        if (/href="(\/uc\?export=download[^"]+)/) {
+        if (/href="(\/uc\?export=download[^"]+)/ || /action="[^"]+(\/uc\?id=.+export=download[^"]+)/) {
             $URL='https://docs.google.com'.$1;
             $URL=~s/&amp;/&/g;
             $confirm='';
