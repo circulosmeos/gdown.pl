@@ -23,7 +23,16 @@ For example, to download [this video](https://drive.google.com/file/d/0B1L_hFrWJ
 
     $ ./gdown.pl https://drive.google.com/file/d/0B1L_hFrWJfRhLUJZdXdSdTdfSWs/edit axolotl.mp4   
 
-As long as a file name is indicated (second parameter), gdown.pl **will try to resume the partially downloaded file** if an incomplete file with that name already exists. Please note that for this to work, wget must correctly provide --spider with --server-response (-S). Wget v1.17 at least is advised.
+As long as a file name is indicated as **second parameter**, `gdown.pl` **will try to resume the partially downloaded file** if an incomplete file with that name already exists. Please note that for this to work, wget must correctly provide `--spider` with `--server-response` (`-S`). `wget` v1.17 at least is advised.
+
+Version
+=======
+
+This version is **v2.2**.
+
+### Warning
+
+Please, note that v1.2 (available between days 12 to 31 of Jan/2019) **should not be used**, as it contains a bug that could result in unusable downloaded files. Proceed to overwrite with v1.4 in case you have it.
 
 Docker
 ======
