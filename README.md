@@ -26,13 +26,29 @@ For example, to download [this video](https://drive.google.com/file/d/0B1L_hFrWJ
 Resuming a download
 ===================
 
-If you need to resume a download, please, use [**gdown.pl v2.0** here](https://github.com/circulosmeos/gdown.pl/tree/with-resume).   
-As long as a file name is indicated as second parameter, *gdown.pl v2.0* **will try to resume the partially downloaded file** if a local incomplete file with that name already exists.
+As long as a file name is indicated as **second parameter**, `gdown.pl` **will try to resume the partially downloaded file** if an incomplete file with that name already exists. Please note that for this to work, wget must correctly provide `--spider` with `--server-response` (`-S`). `wget` v1.17 at least is advised.
+
+Download protected files
+========================
+
+Download of protected files can be done manually exporting browers' auth cookies. With firefox or chrome browsers:
+
+    1. authenticate in google drive or get access to the file download (and stop there, as you want to download it with gdown.pl)
+
+    2. Now the browser has all the needed cookies: install [cookies-txt for firefox](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) and export them (all), or [editthiscookie for chrome](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg?hl=en) (in this case, change in **Options** the format of exportation to **Netscape HTTP Cookie File**)
+
+    3. if using firefox and "cookies-txt" addon, open the `cookies.txt` exported file and remove the string "#HttpOnly_" from all lines. With vim this suffices: ":%s/^#HttpOnly_//" (and ":wq" to exit). If you're an experienced txt master, maintain only "^[^\s]*.google.com" lines, and remove from them the string "#HttpOnly_".
+
+    4. copy the (cookies.txt) modified content (if using firefox and cookies-txt) or copy directly from the clipboard (if using chrome and editthiscookie addon) to `gdown.cookie.temp` file in the same directory where you'll run `gdown.pl`. Note that `gdown.cookie.temp` will be deleted after each download, so retain its data in order to use it multiple times (for example make a master copy, and copy it to `gdown.cookie.temp` before each run).
+
+    5. run `gdown.pl` with your protected link
+
+    6. It should now download the file, and any other file which needs access permissions with the account used in (1). But only until that session finishes.
 
 Version
 =======
 
-This version is **v1.4**.
+This version is **v2.2**.
 
 ### Warning
 
