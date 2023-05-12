@@ -39,7 +39,7 @@ while (-s $TEMP_FILENAME < 100000) { # only if the file isn't the download yet
     open fFILENAME, '<', $TEMP_FILENAME;
     $check=0;
     foreach (<fFILENAME>) {
-        if (/href="(\/uc\?export=download[^"]+)/ || /action="[^"]+(\/uc\?id=.+export=download[^"]+)/) {
+        if (/href="(\/uc\?export=download[^"]+)/ || /action="[^"]+(\/uc\?id=[^"]+export=download[^"]+)/) {
             $URL='https://docs.google.com'.$1;
             $URL=~s/&amp;/&/g;
             $confirm='';
