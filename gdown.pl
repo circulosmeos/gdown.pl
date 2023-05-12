@@ -26,6 +26,11 @@ die "\n./gdown.pl 'gdrive file url' [desired file name]\n\n" if $URL eq '';
 my $FILENAME=shift;
 my $TEMP_FILENAME='gdown.'.strftime("%Y%m%d%H%M%S", localtime).'.'.substr(rand,2);
 
+my $TEMP_exists = 0;
+if (-e $TEMP) {
+    $TEMP_exists = 1;
+}
+
 if ($URL=~m#^https?://drive.google.com/file/d/([^/]+)#) {
     $URL="https://docs.google.com/uc?id=$1&export=download";
 }
@@ -68,7 +73,7 @@ while (-s $TEMP_FILENAME < 100000) { # only if the file isn't the download yet
 
 }
 
-unlink $TEMP;
+unlink $TEMP if !$TEMP_exists;
 
 sub execute_command() {
     my $OUTPUT_FILENAME = $TEMP_FILENAME;
@@ -94,10 +99,10 @@ sub execute_command() {
     $COMMAND.=" -O \"$OUTPUT_FILENAME\"";
     my $OUTPUT = system( $COMMAND );
     if ( $OUTPUT == 2 ) { # do a clean exit with Ctrl+C
-        unlink $TEMP;
+        unlink $TEMP if !$TEMP_exists;
         die "\nDownloading interrupted by user\n\n";
     } elsif ( $OUTPUT == 0 && length($CONTINUE)>0 ) { # do a clean exit with $FILENAME provided
-        unlink $TEMP;
+        unlink $TEMP if !$TEMP_exists;
         die "\nDownloading complete\n\n";
     }
     return 1;
